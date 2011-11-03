@@ -27,8 +27,10 @@ module.exports = (robot) ->
     name = msg.match[1]
 
     response = if name is "all"
-      for name, votes of robot.brain.data.restaurants
+      count = Object.keys(robot.brain.data.restaurants).length
+      response = for name, votes of robot.brain.data.restaurants
         "#{name}: #{votes}"
+      response + "\nTotal: #{count}"
     else
       "#{name}: #{robot.brain.data.restaurants[name]}"
 
