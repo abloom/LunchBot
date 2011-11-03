@@ -55,9 +55,9 @@ module.exports = (robot) ->
     msg.send "#{name} is now at #{count}. #{response}"
 
   robot.hear /(what'?s for lunch|wfl)/i, (msg) ->
-    count = robot.brain.data.restaurants
-    rand = Math.floor(Math.random() * count)
     names = Object.keys(robot.brain.data.restaurants)
-    name = names[rand]
+    count = names.length
+    rand  = Math.floor(Math.random() * count)
+    name  = names[rand]
 
     msg.send "How about #{name}?"
