@@ -23,7 +23,7 @@ module.exports = (robot) ->
 
     msg.send "removed #{name} from my list, bringing the total to #{count}"
 
-  robot.respond /show (all|.*)$/, (msg) ->
+  robot.respond /show (.*)$/, (msg) ->
     name = msg.match[0]
     response = ""
 
