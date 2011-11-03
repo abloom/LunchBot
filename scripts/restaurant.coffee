@@ -30,8 +30,9 @@ module.exports = (robot) ->
       response = for name, votes of robot.brain.data.restaurants
         "#{name}: #{votes}"
 
+      response.sort()
+      response.push "Total: #{response.length}"
       msg.send response.join "\n"
-      msg.send "Total: #{response.count}"
 
     else
       msg.send "#{name}: #{robot.brain.data.restaurants[name]}"
