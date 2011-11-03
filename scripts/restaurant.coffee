@@ -26,15 +26,15 @@ module.exports = (robot) ->
   robot.respond /show (.*)$/i, (msg) ->
     name = msg.match[1]
 
-    response = if name is "all"
+    if name is "all"
       count = Object.keys(robot.brain.data.restaurants).length
       response = for name, votes of robot.brain.data.restaurants
         "#{name}: #{votes}"
-      response.join("\n") + "\nTotal: #{count}"
-    else
-      "#{name}: #{robot.brain.data.restaurants[name]}"
+      response << "\nTotal: #{count}"
+      msg.send response.join("\n")
 
-    msg.send response
+    else
+      msg.send "#{name}: #{robot.brain.data.restaurants[name]}"
 
   robot.respond /(.*) was (not) (.*)$/, (msg) ->
     msg.send "vote"
