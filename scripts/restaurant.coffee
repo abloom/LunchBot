@@ -45,11 +45,11 @@ module.exports = (robot) ->
     response = if vote
       robot.brain.data.restaurants[name] ||= 0
       robot.brain.data.restaurants[name]++
-      "glad you liked it!"
+      "glad you liked it! (chompy)"
     else
       robot.brain.data.restaurants[name] ||= 0
       robot.brain.data.restaurants[name]--
-      "sorry you didn't enjoy it"
+      "sorry you didn't enjoy it. (megusta)"
 
     count = robot.brain.data.restaurants[name]
     msg.send "#{name} is now at #{count}. #{response}"
